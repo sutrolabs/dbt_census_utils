@@ -1,21 +1,20 @@
-
 version: 2
-
-models:
-  - name: my_first_dbt_model
-    description: "A starter dbt model"
-    columns:
-      - name: id
-        description: "The primary key for this table"
-        tests:
-          - unique
-          - not_null
-
-  - name: my_second_dbt_model
-    description: "A starter dbt model"
-    columns:
-      - name: id
-        description: "The primary key for this table"
-        tests:
-          - unique
-          - not_null
+	sources:
+	 - name: penta_raw
+	 schema: "{{ var('penta_raw_schema', 'Penta') }}"
+	 database: "{{ var('penta_raw_database', target.database) }}"
+	 tables:
+	 - name: changelog
+	 description: |
+	 	This table contains a row for every operation performed by Penta
+	 	It includes the result of the operation, as well as any error messages.
+	 columns:
+	 - name: id
+	 description: The id of the change
+	 - name: event
+	 description: The event that caused the change
+	 - name: meta
+	 description: Additional metadata about the change
+	 - name: op_type
+	 description: |
+	 Whether the row was added, changed, or removed relative to the last run.
