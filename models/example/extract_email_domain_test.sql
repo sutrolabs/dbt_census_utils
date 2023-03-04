@@ -1,8 +1,8 @@
 {{ config(materialized="table") }}
 
-with email as (select * from {{ ref("email") }})
+with email_addresses as (select * from {{ ref("census_email_addresses") }})
 
 select 
-    n.email,
-    {{ extract_email_domain('n.email') }} as email_domain
-from email n
+    n.email_addresses,
+    {{ extract_email_domain('n.email_addresses') }} as email_domain
+from email_addresses n
