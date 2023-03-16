@@ -1,4 +1,4 @@
-{{ config(materialized="table") }}
+{{ config(materialized="view") }}
 
 with email_addresses as (select * from {{ ref("census_email_addresses") }})
 

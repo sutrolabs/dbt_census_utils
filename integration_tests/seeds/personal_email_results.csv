@@ -1,10 +1,11 @@
 email_addresses,is_personal_email
-amit.tiwari@visionanalytics.co.in,false
-amit.tiwari@visionanalyticscoin,false
-amit.tiwari@visionanalytics.coin,false
-amit.tiwari@visionanalyticsin,false
-amit.blue@gmail.com.,true
-amit.tiwari@visionanalytics. in,false
-stephene brey@gmail.com,true
-stephenebrey@g.mail.com,false
-stephenebrey@gmailcom,false
+testmail@gmailcom,false
+testmail@gmail.com.,true
+test mail@gmail.com,true
+testmail@g.mail.com,false
+test.mail@test.co.in,false
+test.mail@officeemailin,false
+test.mail@officeemail. in,false
+test.mail@officeemail.coin,false
+test.mail@officeemail.co.in,false
+test.mail@officeemailcoin,false
