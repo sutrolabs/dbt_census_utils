@@ -15,3 +15,8 @@ models:
     tests:
       - dbt_utils.equality:
           compare_model: ref('extract_email_domain_results')
+
+  - name: test_extract_ga4_client_id
+    tests:
+      - dbt_utils.equality:
+          compare_model: ref('ga4_client_id_results')
