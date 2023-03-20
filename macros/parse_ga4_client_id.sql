@@ -10,5 +10,11 @@
         split({{ client_id }}, '.')[offset(3)]
     {%- elif extract_value == 'client_id' -%}
         replace({{ client_id }}, 'GA1.2.','')
+    {% else %}
+    {%- set error_message = '
+    Warning: the `parse_ga4_client_id` macro only accepts unique_id, timestamp, or client_id as the extract_value. The {}.{} model triggered this warning. \
+    '.format(model.package_name, model.name) -%}
+
+    {%- do exceptions.raise_compiler_error(error_message) -%}
     {% endif %}
 {%- endmacro %}
