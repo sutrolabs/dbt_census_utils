@@ -12,7 +12,7 @@
         
         case
         {% for cname in country_code_mapping['country_name'] -%}
-            when lower(country_name) = lower('{{cname | replace("'", "\\'")}}') then '{{country_code_mapping["country_code"][loop.index -1 ]}}'
+            when lower(country_name) = lower('{{cname | replace("'", "\\'")}}') then '{{country_code_mapping["country_code"][loop.index0 ]}}'
         {% endfor %}
             when length(country_name) = 2 then upper(country_name)
         end
