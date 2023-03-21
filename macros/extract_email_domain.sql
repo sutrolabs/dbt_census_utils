@@ -16,7 +16,7 @@
 
             {% for extension in domain_extensions['source_ext'] -%}
                 when regexp_contains(regexp_substr(lower(replace(rtrim({{ email }},'.'),' ','')), '@(.*)', 1, 1),'[^.]{{extension}}$') 
-                    then regexp_replace(regexp_substr(lower(replace(rtrim({{ email }},'.'),' ','')), '@(.*)', 1, 1),'{{extension}}$', '{{domain_extensions["target_ext"][loop.index -1 ]}}')
+                    then regexp_replace(regexp_substr(lower(replace(rtrim({{ email }},'.'),' ','')), '@(.*)', 1, 1),'{{extension}}$', '{{domain_extensions["target_ext"][loop.index0 ]}}')
             {% endfor %}
         end
     {%- endmacro %}
