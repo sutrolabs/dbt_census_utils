@@ -4,12 +4,24 @@
 
     {% macro default__is_personal_email(email) -%}
     
-        {% set sql_statement %}
-            select array_agg(email_domains) email_domains from {{ref('free_email_providers') }}
-        {% endset %}
-
-        {%- set free_email_providers = dbt_utils.get_single_value(sql_statement) -%}
+        {%- set free_email_providers = dbt_utils.get_column_values(table=ref('free_email_providers'), column='email_domains') -%}
         
         case when regexp_substr(lower(replace(rtrim({{ email }},'.'),' ','')), '@(.*)', 1, 1) in unnest({{ free_email_providers }}) then true else false end
+
+    {%- endmacro %}
+
+    {% macro snowflake__is_personal_email(email) -%}
+    
+        {%- set free_email_providers = dbt_utils.get_column_values(table=ref('free_email_providers'), column='email_domains') -%}
+        
+        array_contains(regexp_substr(lower(replace(rtrim({{ email }},'.'),' ','')), '@(.*)', 1, 1, 'e',1)::variant,{{free_email_providers}})
+
+    {%- endmacro %}
+
+    {% macro redshift__is_personal_email(email) -%}
+    
+        {%- set free_email_providers = dbt_utils.get_column_values(table=ref('free_email_providers'), column='email_domains')|join(',') -%}
+
+        case when charindex(regexp_substr(lower(replace(rtrim({{ email }},'.'),' ','')), '@(.*)', 1, 1,'e'),'{{free_email_providers}}') > 0 then true else false end
 
     {%- endmacro %}

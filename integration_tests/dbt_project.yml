@@ -16,7 +16,8 @@ clean-targets:
     - "dbt_packages"
 
 seeds:
-  +schema: seeds
-  +quote_columns: false
+  census_utils_integration_tests:
+    schema: seeds
+    quote_columns: false
 
 vars:
