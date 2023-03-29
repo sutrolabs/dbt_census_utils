@@ -20,3 +20,8 @@ seeds:
   +quote_columns: false
 
 vars:
+  internal_domain: 'getcensus.com'
+  internal_email_relation: 'census_internal_users_manual'
+  internal_email_column: 'email_address'
+  internal_ip_relation: 'census_internal_users_manual'
+  internal_ip_column: 'ip_address'
