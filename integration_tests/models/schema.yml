@@ -16,11 +16,16 @@ models:
       - dbt_utils.equality:
           compare_model: ref('extract_email_domain_results')
 
+  - name: test_extract_ga4_client_id
+    tests:
+      - dbt_utils.equality:
+          compare_model: ref('ga4_client_id_results')
+
   - name: test_country_name_to_country_code
     tests:
       - dbt_utils.equality:
           compare_model: ref('country_names_mapped')
-
+          
   - name: test_is_internal
     tests:
       - dbt_utils.equality:
