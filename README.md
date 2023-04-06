@@ -55,12 +55,12 @@ Census lets you sync your dbt models to destinations such as Salesforce, Hubspot
 </details>
 
 # List of macros:
-* [parse_ga4_client_id (<a href="macros/sql/get_column_values.sql">source</a>)](#parse_ga4_client_id)
-* [clean_name (<a href="macros/sql/clean_name.sql">source</a>)](#clean_name)
-* [is_internal (<a href="macros/sql/is_internal.sql">source</a>)](#is_internal)
-* [extract_email_domain (<a href="macros/sql/extract_email_domain.sql">source</a>)](#extract_email_domain)
-* [is_personal_email (<a href="macros/sql/is_personal_email.sql">source</a>)](#is_personal_email)
-* [get_country_code (<a href="macros/sql/get_country_code.sql">source</a>)](#get_country_code)
+* [parse_ga4_client_id (<a href="macros/parse_ga4_client_id.sql">source</a>)](#parse_ga4_client_id-source)
+* [clean_name (<a href="macros/clean_name.sql">source</a>)](#clean_name-source)
+* [is_internal (<a href="macros/is_internal.sql">source</a>)](#is_internal-source)
+* [extract_email_domain (<a href="macros/extract_email_domain.sql">source</a>)](#extract_email_domain-source)
+* [is_personal_email (<a href="macros/is_personal_email.sql">source</a>)](#is_personal_email-source)
+* [get_country_code (<a href="macros/get_country_code.sql">source</a>)](#get_country_code-source)
 
 
 
