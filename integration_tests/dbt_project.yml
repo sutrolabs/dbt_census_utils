@@ -21,7 +21,7 @@ seeds:
     quote_columns: false
 
 vars:
-  internal_domain: ["'sawtelleanalytics.com'"]
+  internal_domain: ["'sawtelleanalytics.com'", "'sawtelleanalytics.co.uk'"]
   internal_email_relation: 'census_internal_users'
   internal_email_column: 'email_address'
   internal_ip_relation: 'census_internal_users'
