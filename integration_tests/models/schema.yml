@@ -25,3 +25,8 @@ models:
     tests:
       - dbt_utils.equality:
           compare_model: ref('country_names_mapped')
+          
+  - name: test_is_internal
+    tests:
+      - dbt_utils.equality:
+          compare_model: ref('census_users_results')

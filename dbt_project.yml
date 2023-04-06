@@ -26,3 +26,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 seeds:
   +schema: seeds
+
+  vars:
+    internal_domain: ["'getcensus.com'", "'getcensus.co.uk'"]
+    internal_email_relation: 'census_internal_users'
+    internal_email_column: 'email_address'
+    internal_ip_relation: 'census_internal_users'
+    internal_ip_column: 'ip_address'
