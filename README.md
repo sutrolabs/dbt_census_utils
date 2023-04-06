@@ -64,7 +64,7 @@ Census lets you sync your dbt models to destinations such as Salesforce, Hubspot
 
 
 
-## parse_ga4_client_id ([source](macros/sql/parse_ga4_client_id.sql))
+## parse_ga4_client_id ([source](macros/parse_ga4_client_id.sql))
 
 This macro takes a Google Analytics 4 client ID and returns either the unique ID part, the timestamp part, or the entire ID without any 'GA1.2' type prefix before it.
 
@@ -84,7 +84,7 @@ select
 from ga4_client
 ```
 
-## clean_name ([source](macros/sql/clean_name.sql))
+## clean_name ([source](macros/clean_name.sql))
 
 This macro cleans names so that they will be accepted by APIs such as Facebook or Google.
 
@@ -100,7 +100,7 @@ select
     {{ census_utils.clean_name(city_name, 'facebook') }} as cleaned_city_name
 ```
 
-## is_internal ([source](macros/sql/is_internal.sql))
+## is_internal ([source](macros/is_internal.sql))
 
 This macro reports whether a user is an internal user based on their email domain, email address, or IP address.  Relies on variables set in dbt_project.yml.
 
@@ -122,7 +122,7 @@ from
     users
 ```
 
-## extract_email_domain ([source](macros/sql/extract_email_domain.sql))
+## extract_email_domain ([source](macros/extract_email_domain.sql))
 
 This macro extracts the domain from an email address.
 
@@ -138,7 +138,7 @@ select
     {{ census_utils.extract_email_domain('n.email_addresses') }} as email_domain
 ```
 
-## is_personal_email ([source](is_personal_email.sql))
+## is_personal_email ([source](macros/is_personal_email.sql))
 
 This macro determines whether an email address is personal, based on a list of common personal email domains.
 
@@ -154,7 +154,7 @@ select
     {{ census_utils.is_personal_email('n.email_addresses') }} as is_personal_email
 ```
 
-## get_country_code ([source](get_country_code.sql))
+## get_country_code ([source](macros/get_country_code.sql))
 
 This macro converts a country name to a [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code.
 **Args:**
