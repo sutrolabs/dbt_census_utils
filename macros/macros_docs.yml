@@ -1,0 +1,53 @@
+version: 2
+
+macros:
+  - name: parse_ga4_client_id
+    description: This macro takes a Google Analytics 4 client ID and returns either the unique ID part, the timestamp part, or the entire ID without any 'GA1.2' type prefix before it.
+    arguments: 
+      - name: client_id
+        type: string
+        description: Specifies the raw GA 4 client ID to parse.
+      - name: extract_value
+        type: string
+        description: Specifies what to extract from the raw client ID.  Should be either 'unique_id', 'timestamp', or 'client_id'.
+
+  - name: clean_name
+    description: This macro cleans names so that they will be accepted by APIs such as Facebook or Google.
+    arguments:
+      - name: name
+        type: string
+        description: The name to be cleaned.
+      - name: type
+        type: string
+        description: The destination to clean the name for, such as 'Facebook'.
+
+  - name: is_internal
+    description: This macro reports whether a user is an internal user based on their email domain, email address, or IP address.  Relies on variables set in dbt_project.yml.
+    arguments:
+      - name: email
+        type: string
+        description: The email address of the user.
+      - name: ip_address
+        type: string
+        description: The IP address of the user.
+  
+  - name: extract_email_domain
+    description: This macro extracts the domain from an email address.
+    arguments:
+      - name: email
+        type: string
+        description: The email address of the user.
+
+  - name: is_personal_email
+    description: This macro determines whether an email address is personal, based on a list of common personal email domains.
+    arguments:
+      - name: email
+        type: string
+        description: The email address of the user.
+
+  - name: get_country_code
+    description: This macro converts a country name to a ISO 3166 country code.
+    arguments:
+      - name: country_name
+        type: string
+        description: The country name to be converted to a code.
