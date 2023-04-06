@@ -35,7 +35,7 @@ packages:
 ## Step 2: Run dbt seed
 This package uses seeds for macros such as converting country codes to country names.  Run 'dbt seed' after 'dbt deps' to materialize these seeds in your data warehouse.
 
-## Step 4: Define database and schema variables
+## Step 4: Define internal user variables
 If using the is_internal macro, you'll want to adjust the variables in your root `dbt_project.yml` file to reflect the domain of your company and the relations and columns where internal users are tracked:
 
 ```yml
