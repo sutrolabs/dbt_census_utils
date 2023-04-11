@@ -32,7 +32,7 @@ packages:
 
 ```
 
-## Step 2: Run dbt seed
+## Step 3: Run dbt seed
 This package uses seeds for macros such as converting country codes to country names.  Run 'dbt seed' after 'dbt deps' to materialize these seeds in your data warehouse.
 
 ## Step 4: Define internal user variables
@@ -40,7 +40,7 @@ If using the is_internal macro, you'll want to adjust the variables in your root
 
 ```yml
 vars:
-  internal_domain: ["'sawtelleanalytics.com'"]
+  internal_domain: ["'sawtelleanalytics.com'", "'sawtelleanalytics.co.uk'"]
   internal_email_relation: 'census_internal_users'
   internal_email_column: 'email_address'
   internal_ip_relation: 'census_internal_users'
