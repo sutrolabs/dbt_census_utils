@@ -1,5 +1,5 @@
 email_addresses,is_personal_email
-testmail@gmailcom,false
+testmail@gmailcom,true
 testmail@gmail.com.,true
 test mail@gmail.com,true
 testmail@g.mail.com,false
