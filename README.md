@@ -10,10 +10,10 @@
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
 </p>
 
-# Census Utils dbt Package ([Docs](https://census.github.io/dbt_census_utils/))
+# Census Utils dbt Package ([Docs](https://sutrolabs.github.io/dbt_census_utils/#!/overview/census_utils))
 # 📣 What does this dbt package do?
 - Adds a number of macros that are useful when transforming data to be synced with Census.
-- Adds documentation for the macros at: [dbt docs site](https://census.github.io/dbt_census_utils/).
+- Adds documentation for the macros at: [dbt docs site](https://sutrolabs.github.io/dbt_census_utils/#!/overview/census_utils).
 
 # 🎯 How do I use the dbt package?
 
@@ -180,7 +180,7 @@ packages:
 ```
 # 🙌 How is this package maintained and can I contribute?
 ## Package Maintenance
-The Census team maintaining this package _only_ maintains the latest version of the package. We highly recommend you stay consistent with the [latest version](https://hub.getdbt.com/census/census_utils/) of the package and refer to the [CHANGELOG](https://github.com/census/dbt_census_utils/blob/main/CHANGELOG.md) and release notes for more information on changes across versions.
+The Census team maintaining this package _only_ maintains the latest version of the package. We highly recommend you stay consistent with the [latest version](https://hub.getdbt.com/census/census_utils/) of the package and refer to the changelog and release notes for more information on changes across versions.
 
 ## Contributions
 A small team at Census develops these dbt packages. However, the packages are made better by community contributions! 
