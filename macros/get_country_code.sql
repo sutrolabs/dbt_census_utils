@@ -5,7 +5,7 @@
     {% macro default__get_country_code(email) -%}
     
         {% set sql_statement %}
-            select country_name, country_code from  {{ref('country_codes') }}
+            select country_name, country_code from  {{ref('census_utils_country_codes') }}
         {% endset %}
 
         {%- set country_code_mapping = dbt_utils.get_query_results_as_dict(sql_statement) -%}
@@ -21,7 +21,7 @@
     {% macro snowflake__get_country_code(email) -%}
     
         {% set sql_statement %}
-            select country_name, country_code from  {{ref('country_codes') }}
+            select country_name, country_code from  {{ref('census_utils_country_codes') }}
         {% endset %}
 
         {%- set country_code_mapping = dbt_utils.get_query_results_as_dict(sql_statement) -%}

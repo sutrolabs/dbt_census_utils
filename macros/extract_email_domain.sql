@@ -5,7 +5,7 @@
     {% macro default__extract_email_domain(email) -%}
     
         {% set sql_statement %}
-            select source_ext, target_ext from  {{ref('domain_extension_cleanup') }}
+            select source_ext, target_ext from  {{ref('census_utils_domain_extension_cleanup') }}
         {% endset %}
 
         {%- set domain_extensions = dbt_utils.get_query_results_as_dict(sql_statement) -%}
@@ -23,7 +23,7 @@
 
     {%- macro snowflake__extract_email_domain(email) %}
         {% set sql_statement %}
-            select source_ext, target_ext from  {{ref('domain_extension_cleanup') }}
+            select source_ext, target_ext from  {{ref('census_utils_domain_extension_cleanup') }}
         {% endset %}
 
         {%- set domain_extensions = dbt_utils.get_query_results_as_dict(sql_statement) -%}
@@ -40,7 +40,7 @@
 
     {%- macro redshift__extract_email_domain(email) %}
         {% set sql_statement %}
-            select source_ext, target_ext from  {{ref('domain_extension_cleanup') }}
+            select source_ext, target_ext from  {{ref('census_utils_domain_extension_cleanup') }}
         {% endset %}
 
         {%- set domain_extensions = dbt_utils.get_query_results_as_dict(sql_statement) -%}
