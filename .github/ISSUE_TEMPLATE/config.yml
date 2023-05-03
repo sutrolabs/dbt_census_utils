@@ -1,0 +1,13 @@
+contact_links:
+  - name: What is Census
+    url: https://www.getcensus.com/
+    about: Census is the first Data Activation platform built on your warehouse.
+  - name: What is dbt
+    url: https://docs.getdbt.com/docs/introduction
+    about: Check out the dbt docs for all dbt related information
+  - name: Hang out in dbt Slack
+    url: https://www.getdbt.com/community/
+    about: Want to chat with other dbt users, join dbt Slack and hangout in the tools-census channel with us!
+  - name: Hang out in Operational Analytics Club Slack
+    url: https://www.operationalanalytics.club/
+    about: Data nerds wanted in the Operational Analytics Club!

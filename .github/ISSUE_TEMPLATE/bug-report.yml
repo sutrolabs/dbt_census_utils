@@ -1,0 +1,72 @@
+name: Bug
+description: Report a bug or an issue you've found within the dbt package
+title: "[Bug] <title>"
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for using the Census dbt package, your contributions help improve this package for everyone!
+  - type: textarea
+    attributes:
+      label: Describe the issue
+      description: A description of the problem you're experiencing. Also, please provide the steps to reproduce the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant error or model output
+      description: |
+        If applicable, provide the relevant error.
+      render: shell
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: A description of what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: dbt Project configurations
+      description: Please provide the variables and any other project specific configurations from your `dbt_project.yml`.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Package versions
+      description: Please provide the contents of your `packages.yml`.
+    validations:
+      required: true
+  - type: dropdown
+    id: database
+    attributes:
+      label: What database are you using dbt with?
+      multiple: true
+      options:
+        - postgres
+        - redshift
+        - snowflake
+        - bigquery
+        - databricks
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: dbt Version
+      description: What dbt version you are using.
+    validations:
+      required: true
+  - type: checkboxes
+    id: contributing
+    attributes:
+      label: Are you interested in contributing this feature?
+      description: Our team will assess this request and let you know if we will add it to a future release. However, if you would like to expedite the feature, we encourage you to contribute to the package via a PR.
+      options:
+        - label: Yes.
+        - label: No.
+          required: false
+    validations:
+      required: false
