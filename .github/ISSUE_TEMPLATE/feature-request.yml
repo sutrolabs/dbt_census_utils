@@ -1,0 +1,33 @@
+name: Feature
+description: Suggest a new feature for the Census dbt package
+title: "[Feature] <title>"
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for using the Census dbt package, your contributions help improve this package for everyone!
+  - type: textarea
+    attributes:
+      label: Describe the Feature
+      description: A clear and concise description of what you want to happen and why you want the new feature.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Describe alternatives you've considered
+      description: |
+        Describe any alternative solutions you've considered.
+    validations:
+      required: false
+  - type: checkboxes
+    id: contributing
+    attributes:
+      label: Are you interested in contributing this feature?
+      description: Our team will assess this request and let you know if we will add it to a future release. However, if you would like to expedite the feature, we encourage you to contribute to the package via a PR.
+      options:
+        - label: Yes.
+        - label: No.
+          required: false
+    validations:
+      required: false
