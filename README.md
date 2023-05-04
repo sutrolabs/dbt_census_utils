@@ -11,11 +11,11 @@
 </p>
 
 # Census Utils dbt Package ([Docs](https://sutrolabs.github.io/dbt_census_utils/#!/overview/census_utils))
-# 📣 What does this dbt package do?
+# 🎁 What does this dbt package do?
 - Adds a number of macros that are useful when transforming data to be synced with Census.
 - Adds documentation for the macros at: [dbt docs site](https://sutrolabs.github.io/dbt_census_utils/#!/overview/census_utils).
 
-# 🎯 How do I use the dbt package?
+# 👩‍💻 How do I use the dbt package?
 
 ## Step 1: Prerequisites
 To use this dbt package, you must have the following:
@@ -28,22 +28,22 @@ Include the following census_utils package version in your `packages.yml` file, 
 ```yml
 packages:
   - package: census/census_utils
-    version: [">=0.10.0", "<0.11.0"]
+    version: [">=1.0.0", "<2.0.0"]
 
 ```
 
 ## Step 3: Run dbt seed
 This package uses seeds for macros such as converting country codes to country names.  Run 'dbt seed' after 'dbt deps' to materialize these seeds in your data warehouse.
 
-## Step 4: Define internal user variables
-If using the is_internal macro, you'll want to adjust the variables in your root `dbt_project.yml` file to reflect the domain of your company and the relations and columns where internal users are tracked:
+## (Optional) Step 4: Define internal user variables
+If you want to use the is_internal macro, you'll need to add variables to your root `dbt_project.yml` file to reflect the domain of your company and the relations and columns where internal users are tracked.  This relation could be a seed or a dbt model based on a sync of a Google Sheet of internal users.  For example, if your company used the domains sawtelleanalytics.com and sawtelleanalytics.co.uk, and you have a dbt seed called 'my_internal_users' with an email_address column for the emails of internal users and an ip_address column for the IPs of internal users, you would add this to your vars:
 
 ```yml
 vars:
-  internal_domain: ["'sawtelleanalytics.com'", "'sawtelleanalytics.co.uk'"]
-  internal_email_relation: 'census_internal_users'
+  internal_domain: ("'sawtelleanalytics.com'", "'sawtelleanalytics.co.uk'")
+  internal_email_relation: 'my_internal_users'
   internal_email_column: 'email_address'
-  internal_ip_relation: 'census_internal_users'
+  internal_ip_relation: 'my_internal_users'
   internal_ip_column: 'ip_address'
 ```
 
@@ -135,7 +135,7 @@ This macro extracts the domain from an email address.
 ```sql
 select 
     email_address,
-    {{ census_utils.extract_email_domain('n.email_addresses') }} as email_domain
+    {{ census_utils.extract_email_domain('email_addresses') }} as email_domain
 ```
 
 ## is_personal_email ([source](macros/is_personal_email.sql))
@@ -151,7 +151,7 @@ This macro determines whether an email address is personal, based on a list of c
 ```sql
 select 
     email_address,
-    {{ census_utils.is_personal_email('n.email_addresses') }} as is_personal_email
+    {{ census_utils.is_personal_email('email_addresses') }} as is_personal_email
 ```
 
 ## get_country_code ([source](macros/get_country_code.sql))
@@ -166,10 +166,10 @@ This macro converts a country name to a [ISO 3166](https://en.wikipedia.org/wiki
 ```sql
 select 
     c.country_name,
-    {{ census_utils.get_country_code('c.country_code') }} as country_code
+    {{ census_utils.get_country_code('country_name') }} as country_code
 ```
 
-# 🔍 Does this package have dependencies?
+# 🎢 Does this package have dependencies?
 This dbt package is dependent on the following dbt packages. Please be aware that these dependencies are installed by default within this package. For more information on the following packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
 > IMPORTANT: If you have any of these dependent packages in your own `packages.yml` file, we recommend that you remove them from your root `packages.yml` to avoid package version conflicts.
     
@@ -178,15 +178,13 @@ packages:
     - package: dbt-labs/dbt_utils
       version: [">=1.0.0", "<2.0.0"]
 ```
-# 🙌 How is this package maintained and can I contribute?
+# 🤝 How is this package maintained and can I contribute?
 ## Package Maintenance
 The Census team maintaining this package _only_ maintains the latest version of the package. We highly recommend you stay consistent with the [latest version](https://hub.getdbt.com/census/census_utils/) of the package and refer to the changelog and release notes for more information on changes across versions.
 
 ## Contributions
-A small team at Census develops these dbt packages. However, the packages are made better by community contributions! 
-
 We highly encourage and welcome contributions to this package. Check out [this dbt Discourse article](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package!
 
-# 🏪 Are there any other resources available?
+# 🧭 How can I get help or make suggestions?
 - If you have questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/census/dbt_census_utils/issues/new/choose) section to find the right avenue of support for you.
 - If you would like to provide feedback to the dbt package team at Census or would like to request a new dbt package, please join the [Operational Analytics Slack](https://www.operationalanalytics.club/).

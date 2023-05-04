@@ -2,7 +2,7 @@
     {{ adapter.dispatch('get_country_code', 'census_utils') (country_name) }}
 {%- endmacro %}
 
-    {% macro default__get_country_code(email) -%}
+    {% macro default__get_country_code(country_name) -%}
     
         {% set sql_statement %}
             select country_name, country_code from  {{ref('census_utils_country_codes') }}
@@ -12,13 +12,13 @@
         
         case
         {% for cname in country_code_mapping['country_name'] -%}
-            when lower(country_name) = lower('{{cname | replace("'", "\\'")}}') then '{{country_code_mapping["country_code"][loop.index0]}}'
+            when lower({{ country_name }}) = lower('{{cname | replace("'", "\\'")}}') then '{{country_code_mapping["country_code"][loop.index0]}}'
         {% endfor %}
-            when length(country_name) = 2 then upper(country_name)
+            when length({{ country_name }}) = 2 then upper({{ country_name }})
         end
     {%- endmacro %}
 
-    {% macro snowflake__get_country_code(email) -%}
+    {% macro snowflake__get_country_code(country_name) -%}
     
         {% set sql_statement %}
             select country_name, country_code from  {{ref('census_utils_country_codes') }}
@@ -28,8 +28,8 @@
         
         case
         {% for cname in country_code_mapping['COUNTRY_NAME'] -%}
-            when lower(country_name) = lower('{{cname | replace("'", "\\'")}}') then '{{country_code_mapping["COUNTRY_CODE"][loop.index0]}}'
+            when lower({{ country_name }}) = lower('{{cname | replace("'", "\\'")}}') then '{{country_code_mapping["COUNTRY_CODE"][loop.index0]}}'
         {% endfor %}
-            when length(country_name) = 2 then upper(country_name)
+            when length({{ country_name }}) = 2 then upper({{ country_name }})
         end
     {%- endmacro %}
