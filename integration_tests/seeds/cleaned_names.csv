@@ -1,5 +1,7 @@
-name
-saopaulo
-dallas
-nyc
-losangeles
+facebook_name,google_name,default_name
+saopaulo,são paulo,saopaulo
+dallas,dallas,dallas
+nyc,nyc,nyc
+losangeles,los-angeles,losangeles
+leadingwhitespace,leading_whitespace,leadingwhitespace
+trailingwhitespace,trailing_whitespace,trailingwhitespace
