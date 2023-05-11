@@ -102,7 +102,7 @@ select
 
 ## is_internal ([source](macros/is_internal.sql))
 
-This macro reports whether a user is an internal user based on their email domain, email address, or IP address.  Relies on variables set in dbt_project.yml.
+This macro reports whether a user is an internal user based on their email domain, email address, or IP address.  Relies on at least one variable being set in [dbt_project.yml](https://github.com/sutrolabs/dbt_census_utils#optional-step-4-define-internal-user-variables).
 
 **Args:**
 
