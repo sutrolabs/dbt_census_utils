@@ -176,7 +176,7 @@ This dbt package is dependent on the following dbt packages. Please be aware tha
 ```yml
 packages:
     - package: dbt-labs/dbt_utils
-      version: [">=1.0.0", "<2.0.0"]
+      version: [">=.9.0", "<2.0.0"]
 ```
 # 🤝 How is this package maintained and can I contribute?
 ## Package Maintenance
@@ -186,5 +186,5 @@ The Census team maintaining this package _only_ maintains the latest version of 
 We highly encourage and welcome contributions to this package. Check out [this dbt Discourse article](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package!
 
 # 🧭 How can I get help or make suggestions?
-- If you have questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/census/dbt_census_utils/issues/new/choose) section to find the right avenue of support for you.
+- If you have questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/sutrolabs/dbt_census_utils/issues/new/choose) section to find the right avenue of support for you.
 - If you would like to provide feedback to the dbt package team at Census or would like to request a new dbt package, please join the [Operational Analytics Slack](https://www.operationalanalytics.club/).
