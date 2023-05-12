@@ -19,7 +19,7 @@ macros:
         description: The name to be cleaned.
       - name: type
         type: string
-        description: The destination to clean the name for, such as 'Facebook'.
+        description: The destination to clean the name for, such as 'facebook' or 'google'.
 
   - name: is_internal
     description: This macro reports whether a user is an internal user based on their email domain, email address, or IP address.  Relies on variables set in dbt_project.yml.
