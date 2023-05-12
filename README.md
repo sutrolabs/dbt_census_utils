@@ -165,7 +165,7 @@ This macro converts a country name to a [ISO 3166](https://en.wikipedia.org/wiki
 
 ```sql
 select 
-    c.country_name,
+    country_name,
     {{ census_utils.get_country_code('country_name') }} as country_code
 ```
 
