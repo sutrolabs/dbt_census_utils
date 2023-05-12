@@ -90,14 +90,15 @@ This macro cleans names so that they will be accepted by APIs such as Facebook o
 
 **Args:**
 
-- `name` (required):  The name to be cleaned.
-- `type` (required): The destination to clean the name for, such as 'facebook'.
+- `name` (required): The name to be cleaned.
+- `type` (required): The destination to clean the name for, such as 'facebook' or 'google'.
 
 **Usage:**
 
 ```sql
 select 
-    {{ census_utils.clean_name(city_name, 'facebook') }} as cleaned_city_name
+    {{ census_utils.clean_name(first_name, 'facebook') }} as cleaned_first_name_facebook,
+    {{ census_utils.clean_name(first_name, 'google') }} as cleaned_first_name_google
 ```
 
 ## is_internal ([source](macros/is_internal.sql))
