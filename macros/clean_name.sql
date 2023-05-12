@@ -1,8 +1,8 @@
 {%- macro clean_name(name, type='facebook') %}
 {%- if type == 'facebook' -%}
-regexp_replace(translate(lower(name), 'ůțąðěřšžųłşșýźľňèéëêēėęàáâäæãåāîïíīįìôöòóœøōõûüùúūñńçćč','utaoerszutssyzlneeeeeeaaaaaaaaiiiiiioooooooouuuuunnccc'),'[^a-z]','')
+regexp_replace(translate(lower({{ name }}), 'ůțąðěřšžųłşșýźľňèéëêēėęàáâäæãåāîïíīįìôöòóœøōõûüùúūñńçćč','utaoerszutssyzlneeeeeeaaaaaaaaiiiiiioooooooouuuuunnccc'),'[^a-z]','')
 {%- elif type == 'google' -%}
-trim(lower(name))
+trim(lower({{ name }}))
 
 {% else %}
     {%- set error_message = '
