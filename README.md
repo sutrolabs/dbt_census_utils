@@ -12,7 +12,7 @@
 
 # Census Utils dbt Package ([Docs](https://sutrolabs.github.io/dbt_census_utils/#!/overview/census_utils))
 # 🎁 What does this dbt package do?
-- Adds a number of macros that are useful when transforming data to be synced with Census.
+- Adds a number of macros that are useful when transforming data to be synced via reverse ETL (with Census or your own pipelines).
 - Adds documentation for the macros at: [dbt docs site](https://sutrolabs.github.io/dbt_census_utils/#!/overview/census_utils).
 
 # 👩‍💻 How do I use the dbt package?
@@ -36,11 +36,11 @@ packages:
 This package uses seeds for macros such as converting country codes to country names.  Run 'dbt seed' after 'dbt deps' to materialize these seeds in your data warehouse.
 
 ## (Optional) Step 4: Define internal user variables
-If you want to use the is_internal macro, you'll need to add variables to your root `dbt_project.yml` file to reflect the domain of your company and the relations and columns where internal users are tracked.  This relation could be a seed or a dbt model based on a sync of a Google Sheet of internal users.  For example, if your company used the domains sawtelleanalytics.com and sawtelleanalytics.co.uk, and you have a dbt seed called 'my_internal_users' with an email_address column for the emails of internal users and an ip_address column for the IPs of internal users, you would add this to your vars:
+The [is_internal macro (<a href="macros/is_internal.sql">source</a>)](#is_internal-source) identifies internal users based off of several potential methods: their email address domain, an existing list of email addresses, or an existing list of IP Addresses. If you want to use the `is_internal` macro, you'll need to specify at least one of these approaches. Add variables to your root `dbt_project.yml` file to reflect the domain of your company and the relations and columns where internal users are tracked.  These relations can be a dbt seed or a dbt model. Common methods of maintaining this relation include: a seed file of internal users and IP address, a dbt model that identifies internal users directly from your application database, or a dbt model referencing a Google Sheet of internal users.  For example, if your company used the domains sawtelleanalytics.com and sawtelleanalytics.co.uk, and you have a dbt seed called 'my_internal_users' with an email_address column for the emails of internal users and an ip_address column for the IPs of internal users, you would add this to your vars:
 
 ```yml
 vars:
-  internal_domain: ("'sawtelleanalytics.com'", "'sawtelleanalytics.co.uk'")
+  internal_domain: ('sawtelleanalytics.com', 'sawtelleanalytics.co.uk')
   internal_email_relation: 'my_internal_users'
   internal_email_column: 'email_address'
   internal_ip_relation: 'my_internal_users'
@@ -90,14 +90,15 @@ This macro cleans names so that they will be accepted by APIs such as Facebook o
 
 **Args:**
 
-- `name` (required):  The name to be cleaned.
-- `type` (required): The destination to clean the name for, such as 'facebook'.
+- `name` (required): The name to be cleaned.
+- `type` (required): The destination to clean the name for, such as 'facebook' or 'google'.
 
 **Usage:**
 
 ```sql
 select 
-    {{ census_utils.clean_name(city_name, 'facebook') }} as cleaned_city_name
+    {{ census_utils.clean_name(first_name, 'facebook') }} as cleaned_first_name_facebook,
+    {{ census_utils.clean_name(first_name, 'google') }} as cleaned_first_name_google
 ```
 
 ## is_internal ([source](macros/is_internal.sql))
@@ -165,7 +166,7 @@ This macro converts a country name to a [ISO 3166](https://en.wikipedia.org/wiki
 
 ```sql
 select 
-    c.country_name,
+    country_name,
     {{ census_utils.get_country_code('country_name') }} as country_code
 ```
 
