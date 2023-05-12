@@ -12,7 +12,7 @@
 
 # Census Utils dbt Package ([Docs](https://sutrolabs.github.io/dbt_census_utils/#!/overview/census_utils))
 # 🎁 What does this dbt package do?
-- Adds a number of macros that are useful when transforming data to be synced with Census.
+- Adds a number of macros that are useful when transforming data to be synced via reverse ETL (with Census or your own pipelines).
 - Adds documentation for the macros at: [dbt docs site](https://sutrolabs.github.io/dbt_census_utils/#!/overview/census_utils).
 
 # 👩‍💻 How do I use the dbt package?
