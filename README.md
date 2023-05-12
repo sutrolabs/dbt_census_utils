@@ -40,7 +40,7 @@ If you want to use the is_internal macro, you'll need to add variables to your r
 
 ```yml
 vars:
-  internal_domain: ("'sawtelleanalytics.com'", "'sawtelleanalytics.co.uk'")
+  internal_domain: ('sawtelleanalytics.com', 'sawtelleanalytics.co.uk')
   internal_email_relation: 'my_internal_users'
   internal_email_column: 'email_address'
   internal_ip_relation: 'my_internal_users'
