@@ -19,15 +19,17 @@
     {%- elif type == 'city' and destination == 'facebook' -%}
         regexp_replace(translate(lower({{ field }}), 'ůțąðěřšžųłşșýźľňèéëêēėęàáâäæãåāîïíīįìôöòóœøōõûüùúūñńçćč','utaoerszutssyzlneeeeeeaaaaaaaaiiiiiioooooooouuuuunnccc'),'[^a-z]','')
     {%- elif type == 'zip' and destination == 'facebook' -%}
-        {# Google can accept 9 digit zip codes but Google cannot. #}
-        left({{ field }}, 5)
+        {# Google can accept 9 digit zip codes but Facebook cannot. #}
+        trim(left({{ field }}, 5))
+    {%- elif type == 'zip' and destination == 'google' -%}
+        trim({{ field }})
     {% else %}
         {%- set error_message = '
         Warning: the `clean` macro does not accept the combination of destination {} and type {}.  The {}.{} model triggered this warning. \
         '.format(type, destination, model.package_name, model.name) -%}
 
         {%- do exceptions.raise_compiler_error(error_message) -%}
-        name
+        {{ field }}
     {% endif %}
 {%- endmacro -%}
 
