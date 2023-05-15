@@ -1,0 +1,7 @@
+cleaned_facebook_fn,cleaned_facebook_ln,cleaned_city,cleaned_facebook_zip,cleaned_google_fn,cleaned_google_email,cleaned_google_country,cleaned_facebook_country,default_clean
+joão,nishimura,saopaulo,90064,joão,user@gmail.com,BR,br,joão
+josé,de guzman,dallas,12345,josé,user@gmail.com,US,us,josé
+fred,smith,nyc,98109,fred,user@yahoo.com,US,us,fred
+joe,schmoe,losangeles,10000,joe,u.s.e.r@yahoo.com,US,us,joe
+user,name,leadingwhitespace,234,user,user@customer.com,PT,pt,user
+first,last,trailingwhitespace,EC3N ,first,user2@customer.com,GB,gb,first

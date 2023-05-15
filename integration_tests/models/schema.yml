@@ -1,10 +1,10 @@
 version: 2
 
 models:
-  - name: test_clean_name
+  - name: test_clean
     tests:
       - dbt_utils.equality:
-          compare_model: ref('cleaned_names')
+          compare_model: ref('cleaned_fields')
 
   - name: test_is_personal_email
     tests:
