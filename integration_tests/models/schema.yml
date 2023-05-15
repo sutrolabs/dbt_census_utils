@@ -1,32 +1,32 @@
 version: 2
 
 models:
-  - name: test_clean_name
+  - name: test_clean
     tests:
       - dbt_utils.equality:
-          compare_model: ref('cleaned_names')
+          compare_model: ref('census_utils_cleaned_fields')
 
   - name: test_is_personal_email
     tests:
       - dbt_utils.equality:
-          compare_model: ref('personal_email_results')
+          compare_model: ref('census_utils_personal_email_results')
 
   - name: test_extract_email_domain
     tests:
       - dbt_utils.equality:
-          compare_model: ref('extract_email_domain_results')
+          compare_model: ref('census_utils_extract_email_domain_results')
 
   - name: test_extract_ga4_client_id
     tests:
       - dbt_utils.equality:
-          compare_model: ref('ga4_client_id_results')
+          compare_model: ref('census_utils_ga4_client_id_results')
 
   - name: test_country_name_to_country_code
     tests:
       - dbt_utils.equality:
-          compare_model: ref('country_names_mapped')
+          compare_model: ref('census_utils_country_names_mapped')
           
   - name: test_is_internal
     tests:
       - dbt_utils.equality:
-          compare_model: ref('census_users_results')
+          compare_model: ref('census_utils_users_results')

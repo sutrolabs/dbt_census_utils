@@ -1,6 +1,6 @@
 {{ config(materialized="view") }}
 
-with ga4_client as (select * from {{ ref("ga4_client_id") }})
+with ga4_client as (select * from {{ ref("census_utils_ga4_client_id") }})
 
 select 
     ga4_client_id,

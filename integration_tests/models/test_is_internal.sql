@@ -1,6 +1,6 @@
 {{ config(materialized="view") }}
 
-with internal_users as (select * from {{ ref("census_users") }})
+with internal_users as (select * from {{ ref("census_utils_users") }})
 
 select 
     u.email_address

@@ -11,15 +11,18 @@ macros:
         type: string
         description: Specifies what to extract from the raw client ID.  Should be either 'unique_id', 'timestamp', or 'client_id'.
 
-  - name: clean_name
+  - name: clean
     description: This macro cleans names so that they will be accepted by APIs such as Facebook or Google.
     arguments:
       - name: name
         type: string
         description: The name to be cleaned.
+      - name: destination
+        type: string
+        description: The destination to clean the name for, which currently must be 'facebook' or 'google'.
       - name: type
         type: string
-        description: The destination to clean the name for, such as 'facebook' or 'google'.
+        description: The type of field, currently supports 'name' (for first or last name), 'email', 'city', 'country', or 'zip'.  Non-US postal codes should not be formatted by this macro as requirements for those vary.
 
   - name: is_internal
     description: This macro reports whether a user is an internal user based on their email domain, email address, or IP address.  Relies on variables set in dbt_project.yml.

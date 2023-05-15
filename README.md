@@ -28,7 +28,7 @@ Include the following census_utils package version in your `packages.yml` file, 
 ```yml
 packages:
   - package: census/census_utils
-    version: [">=1.0.0", "<2.0.0"]
+    version: [">=0.1.0", "<1.0.0"]
 
 ```
 
@@ -56,7 +56,7 @@ Census lets you sync your dbt models to destinations such as Salesforce, Hubspot
 
 # List of macros:
 * [parse_ga4_client_id (<a href="macros/parse_ga4_client_id.sql">source</a>)](#parse_ga4_client_id-source)
-* [clean_name (<a href="macros/clean_name.sql">source</a>)](#clean_name-source)
+* [clean (<a href="macros/clean.sql">source</a>)](#clean-source)
 * [is_internal (<a href="macros/is_internal.sql">source</a>)](#is_internal-source)
 * [extract_email_domain (<a href="macros/extract_email_domain.sql">source</a>)](#extract_email_domain-source)
 * [is_personal_email (<a href="macros/is_personal_email.sql">source</a>)](#is_personal_email-source)
@@ -84,21 +84,26 @@ select
 from ga4_client
 ```
 
-## clean_name ([source](macros/clean_name.sql))
+## clean ([source](macros/clean.sql))
 
-This macro cleans names so that they will be accepted by APIs such as Facebook or Google.
+This macro cleans fields so that they will be accepted by APIs such as Facebook or Google.
 
 **Args:**
 
-- `name` (required): The name to be cleaned.
-- `type` (required): The destination to clean the name for, such as 'facebook' or 'google'.
+- `field` (required): The name to be cleaned.
+- `destination` (required): The destination the field will be sent to.  Currently supports 'facebook' or 'google'.
+- `type` (required): The type of field, currently supports 'name' (for first or last name), 'email', 'city', 'country', or 'zip'.  Non-US postal codes should not be formatted by this macro as requirements for those vary.
 
 **Usage:**
 
 ```sql
 select 
-    {{ census_utils.clean_name(first_name, 'facebook') }} as cleaned_first_name_facebook,
-    {{ census_utils.clean_name(first_name, 'google') }} as cleaned_first_name_google
+    {{ census_utils.clean('fn',destination='facebook',type='name') }} as cleaned_facebook_fn,
+    {{ census_utils.clean('ln',destination='facebook',type='name') }} as cleaned_facebook_ln,
+    {{ census_utils.clean('country',destination='facebook',type='country') }} as cleaned_facebook_country,
+    {{ census_utils.clean('city',destination='facebook',type='city') }} as cleaned_facebook_city,
+    case when {{ census_utils.clean('country_to_clean','facebook','country') }} = 'us' then {{ census_utils.clean('zip','facebook','zip') }} else zip end as cleaned_facebook_zip,
+    {{ census_utils.clean('email_address','facebook','email') }} as cleaned_facebook_email
 ```
 
 ## is_internal ([source](macros/is_internal.sql))

@@ -1,6 +1,6 @@
 {{ config(materialized="view") }}
 
-with country_name as (select * from {{ ref("country_names_to_map") }})
+with country_name as (select * from {{ ref("census_utils_country_names_to_map") }})
 
 select 
     c.country_name,

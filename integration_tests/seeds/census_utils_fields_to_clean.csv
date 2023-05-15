@@ -1,0 +1,7 @@
+email_to_clean,fn_to_clean,ln_to_clean,zip_to_clean,city_to_clean,country_to_clean
+user@gmail.com,João,Nishimura,90064-1234,São Paulo,Brazil
+u.s.e.r@gmail.com,José,de Guzman,12345,Dallas,United States
+user@yahoo.com,Fred,Smith,98109-1234,NYC,US
+u.s.e.r@yahoo.com,joe,schmoe,10000,Los-Angeles,USA
+user@customer.com,user,name,234, leading_whitespace,Portugal
+user2@customer.com,first,last,EC3N 4AB,trailing_whitespace ,United Kingdom
