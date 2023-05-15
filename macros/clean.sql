@@ -3,7 +3,7 @@
 
     {%- if type == 'name' -%}
         trim(lower({{ field }}))
-    {%- elif type == 'email' and destination != 'google' -%}
+    {%- elif type == 'email' and destination == 'facebook' -%}
         trim(lower({{ field }}))
     {%- elif type == 'email' and destination == 'google' -%}
         trim(lower(
@@ -18,6 +18,8 @@
         lower({{ census_utils.get_country_code(field) }})
     {%- elif type == 'city' and destination == 'facebook' -%}
         regexp_replace(translate(lower({{ field }}), 'ůțąðěřšžųłşșýźľňèéëêēėęàáâäæãåāîïíīįìôöòóœøōõûüùúūñńçćč','utaoerszutssyzlneeeeeeaaaaaaaaiiiiiioooooooouuuuunnccc'),'[^a-z]','')
+    {%- elif type == 'city' and destination == 'google' -%}
+        trim(lower({{ field }}))
     {%- elif type == 'zip' and destination == 'facebook' -%}
         {# Google can accept 9 digit zip codes but Facebook cannot. #}
         trim(left({{ field }}, 5))
@@ -26,7 +28,7 @@
     {% else %}
         {%- set error_message = '
         Warning: the `clean` macro does not accept the combination of destination {} and type {}.  The {}.{} model triggered this warning. \
-        '.format(type, destination, model.package_name, model.name) -%}
+        '.format(destination, type, model.package_name, model.name) -%}
 
         {%- do exceptions.raise_compiler_error(error_message) -%}
         {{ field }}

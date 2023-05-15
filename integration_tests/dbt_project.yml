@@ -22,7 +22,7 @@ seeds:
 
 vars:
   internal_domain: ('sawtelleanalytics.com', 'sawtelleanalytics.co.uk')
-  internal_email_relation: 'census_internal_users'
+  internal_email_relation: 'census_utils_internal_users'
   internal_email_column: 'email_address'
-  internal_ip_relation: 'census_internal_users'
+  internal_ip_relation: 'census_utils_internal_users'
   internal_ip_column: 'ip_address'

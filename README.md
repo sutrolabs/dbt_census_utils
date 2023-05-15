@@ -28,7 +28,7 @@ Include the following census_utils package version in your `packages.yml` file, 
 ```yml
 packages:
   - package: census/census_utils
-    version: [">=1.0.0", "<2.0.0"]
+    version: [">=0.1.0", "<1.0.0"]
 
 ```
 
