@@ -27,7 +27,7 @@ Include the following census_utils package version in your `packages.yml` file, 
 > TIP: Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 ```yml
 packages:
-  - package: census/census_utils
+  - package: sutrolabs/census_utils
     version: [">=0.1.0", "<1.0.0"]
 
 ```
