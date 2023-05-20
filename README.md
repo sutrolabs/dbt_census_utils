@@ -86,7 +86,7 @@ from ga4_client
 
 ## clean ([source](macros/clean.sql))
 
-This macro cleans fields so that they will be accepted by APIs such as Facebook or Google.
+This macro cleans fields so that they will be accepted by APIs such as [Facebook Ads](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences/#hash) or [Google Ads](https://developers.google.com/google-ads/api/docs/conversions/enhance-conversions#normalization_and_hashing).
 
 **Args:**
 

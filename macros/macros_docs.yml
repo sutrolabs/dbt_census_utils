@@ -12,7 +12,7 @@ macros:
         description: Specifies what to extract from the raw client ID.  Should be either 'unique_id', 'timestamp', or 'client_id'.
 
   - name: clean
-    description: This macro cleans names so that they will be accepted by APIs such as Facebook or Google.
+    description: This macro cleans names so that they will be accepted by APIs such as [Facebook Ads](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences/#hash) or [Google Ads](https://developers.google.com/google-ads/api/docs/conversions/enhance-conversions#normalization_and_hashing).
     arguments:
       - name: name
         type: string
