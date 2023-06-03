@@ -4,32 +4,10 @@
 
     {% macro default__get_country_code(country_name) -%}
     
-        {% set sql_statement %}
-            select country_name, country_code from  {{ref('census_utils_country_codes') }}
-        {% endset %}
-
-        {%- set country_code_mapping = dbt_utils.get_query_results_as_dict(sql_statement) -%}
+        case when length({{ country_name }}) > 2 then (
+            select {{ dbt.any_value("country_code") }} as country_code
+            from {{ ref('census_utils_country_codes') }} 
+            where lower(country_name) =  lower({{ country_name }})
+        ) else upper({{ country_name }}) end 
         
-        case
-        {% for cname in country_code_mapping['country_name'] -%}
-            when lower({{ country_name }}) = lower('{{cname | replace("'", "\\'")}}') then '{{country_code_mapping["country_code"][loop.index0]}}'
-        {% endfor %}
-            when length({{ country_name }}) = 2 then upper({{ country_name }})
-        end
-    {%- endmacro %}
-
-    {% macro snowflake__get_country_code(country_name) -%}
-    
-        {% set sql_statement %}
-            select country_name, country_code from  {{ref('census_utils_country_codes') }}
-        {% endset %}
-
-        {%- set country_code_mapping = dbt_utils.get_query_results_as_dict(sql_statement) -%}
-        
-        case
-        {% for cname in country_code_mapping['COUNTRY_NAME'] -%}
-            when lower({{ country_name }}) = lower('{{cname | replace("'", "\\'")}}') then '{{country_code_mapping["COUNTRY_CODE"][loop.index0]}}'
-        {% endfor %}
-            when length({{ country_name }}) = 2 then upper({{ country_name }})
-        end
     {%- endmacro %}

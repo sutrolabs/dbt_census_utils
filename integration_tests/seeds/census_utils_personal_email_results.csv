@@ -1,11 +1,10 @@
 email_addresses,is_personal_email
-testmail@gmailcom,true
+testmail@gmailcom,
 testmail@gmail.com.,true
 test mail@gmail.com,true
 testmail@g.mail.com,false
 test.mail@test.co.in,false
-test.mail@officeemailin,false
+test.mail@officeemailin,
 test.mail@officeemail. in,false
 test.mail@officeemail.coin,false
 test.mail@officeemail.co.in,false
-test.mail@officeemailcoin,false

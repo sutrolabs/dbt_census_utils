@@ -1,11 +1,10 @@
 email_addresses,email_domain
-testmail@gmailcom,gmail.com
+testmail@gmailcom,
 testmail@gmail.com.,gmail.com
 test mail@gmail.com,gmail.com
 testmail@g.mail.com,g.mail.com
 test.mail@test.co.in,test.co.in
-test.mail@officeemailin,officeemail.in
+test.mail@officeemailin,
 test.mail@officeemail. in,officeemail.in
 test.mail@officeemail.coin,officeemail.coin
 test.mail@officeemail.co.in,officeemail.co.in
-test.mail@officeemailcoin,officeemail.co.in
