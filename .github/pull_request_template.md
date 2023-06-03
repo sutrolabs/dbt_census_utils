@@ -10,10 +10,6 @@
 - [ ] Yes (please provide change details below.)
 - [ ] No  (please provide an explanation as to how the change is non-breaking below.)
 
-**Did you update the dbt_project.yml files with the version upgrade (using semantic versioning)? (In both the main project and integration_tests)** 
-<!--- The dbt_project.yml and the integration_tests/dbt_project.yml files contain the version number. Be sure to upgrade them both -->
-- [ ] Yes
-
 **Is this PR in response to a previously created issue**
 <!--- If an Issue was created it is helpful to track the progress by linking it in the PR. -->
 - [ ] Yes [link here]
