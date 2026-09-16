@@ -14,7 +14,7 @@ macros:
   - name: clean
     description: This macro cleans names so that they will be accepted by APIs such as [Facebook Ads](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences/#hash) or [Google Ads](https://developers.google.com/google-ads/api/docs/conversions/enhance-conversions#normalization_and_hashing).
     arguments:
-      - name: name
+      - name: field
         type: string
         description: The name to be cleaned.
       - name: destination
@@ -47,6 +47,9 @@ macros:
       - name: email
         type: string
         description: The email address of the user.
+      - name: treat_null_as_false
+        type: boolean
+        description: When true, an email whose domain cannot be determined returns false instead of null.  Defaults to false.
 
   - name: get_country_code
     description: This macro converts a country name to a ISO 3166 country code.
